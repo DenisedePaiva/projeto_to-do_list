@@ -1,12 +1,11 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import '../App.css'
 import Todo from './Todo'
 import TodoForm from "./TodoForm";
 
-export default function Todos(){
+export default function Todos() {
 
     const [todos, setTodos] = useState([
-
         {
             text: 'Aula do TransformaTec',
             isCompleted: false
@@ -23,9 +22,9 @@ export default function Todos(){
 
     const addTodo = useCallback(
         (text) => {
-            const newTodos = [...todos, {text}]
+            const newTodos = [...todos, { text }]
             setTodos(newTodos)
-        },[todos]
+        }, [todos]
     )
 
     const completeTodo = (index) => {
@@ -33,37 +32,36 @@ export default function Todos(){
         const newTodos = [...todos]
         newTodos[index].isCompleted = true
         setTodos(newTodos)
-
     }
 
     const removeTodo = (index) => {
         const newTodos = [...todos]
-        newTodos.splice(index,1)
+        newTodos.splice(index, 1)
         setTodos(newTodos)
     }
 
     return (
-        
-        <div className ="app">
-            
+
+        <div className="app">
+
             <h1>Lista de Tarefas</h1>
-            
+
             <div className="todo-list">
                 {
                     todos.map(
                         (todo, index) => (
-                            <Todo 
+                            <Todo
                                 key={index}
                                 index={index}
                                 todo={todo}
-                                completeTodo = {completeTodo}
-                                removeTodo = {removeTodo}
+                                completeTodo={completeTodo}
+                                removeTodo={removeTodo}
                             />
                         )
                     )
                 }
-                <TodoForm addTodo={addTodo}/>
-                
+                <TodoForm addTodo={addTodo} />
+
             </div>
         </div>
     )

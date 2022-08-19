@@ -1,29 +1,26 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-export default function TodoForm ({addTodo}){
+export default function TodoForm({ addTodo }) {
 
     const [value, setValue] = useState("")
 
     const handleSubmit = (event) => {
 
         event.preventDefault()
-        
-        if(!value)
-            return
-        
-        addTodo(value)
-        setValue("")    
 
+        if (!value)
+            return
+
+        addTodo(value)
+        setValue("")
     }
-   
-    
 
     return (
-        
+
         <form onSubmit={handleSubmit}>
 
-            <input 
-                type="text" 
+            <input
+                type="text"
                 className="input"
                 placeholder="escreva aqui as tarefas"
                 value={value}
@@ -32,10 +29,10 @@ export default function TodoForm ({addTodo}){
                         setValue(e.target.value)
                     }
                 }
-           
+
             />
-            
-            <button className= "bnt">Enviar</button>
+
+            <button className="bnt">Enviar</button>
 
         </form>
     )
